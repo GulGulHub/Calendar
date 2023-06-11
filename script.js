@@ -8,12 +8,19 @@ let check_this = last_day.getDate()
 let current_year = today_date.getFullYear()
 let current_month = today_date.toLocaleString('default', { month: 'long' });
 
-let arrow = document.querySelector('#arrow-left');
-arrow.addEventListener('click', newFunction);
+let arrow_left = document.querySelector('#arrow-left');
+arrow_left.addEventListener('click', function() {
+  newFunction(-1);
+});
+
+let arrow_right = document.querySelector('#arrow-right');
+arrow_right.addEventListener('click', function() {
+    newFunction(1);
+  });
 
 
-
-function newFunction () {
+function newFunction (direction) {
+    console.log('click-has-worked')
         let checkMonth = document.querySelector('#month').innerText;
         let checkYear = document.querySelector('#year').innerText;
       
@@ -24,7 +31,7 @@ function newFunction () {
         let currentDate = new Date(checkYear, monthNumber, 1);
       
         // Get the previous month and year
-        let previousMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+        let previousMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + direction, 1);
         let previousMonth = previousMonthDate.toLocaleString('default', { month: 'long' });
         let previousYear = previousMonthDate.getFullYear();
 
