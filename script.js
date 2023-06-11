@@ -6,6 +6,20 @@ let first_weekday = first_day.getDay() - 1
 let current_year = today_date.getFullYear()
 let current_month = today_date.toLocaleString('default', { month: 'long' });
 
+function createNewMonth() {
+    let arrow = document.querySelector('#arrow-left')
+    arrow.addEventListener('click', newFunction)
+}
+
+function newFunction () {
+    let month_before = current_month -1
+    console.log(month_before) 
+}
+
+createNewMonth()
+
+
+
 function create_years_months() {
     let month = document.getElementById("month")
     month.innerText = current_month
@@ -39,6 +53,9 @@ function fill_calendar(last_day) {
             } else if (first_weekday == i && counter == 1) {
                 let new_day = document.createElement('td')
                 new_day.innerHTML = counter
+                //new_day.style.backgroundColor = 'red'
+                new_day.classList.add('bg-transparent','bg-blue-100','text-center') 
+                console.log(new_day.className)
                 counter += 1
                 row.append(new_day)
                 if (i == 6) {
@@ -49,6 +66,8 @@ function fill_calendar(last_day) {
             } else if (counter <= last_day.getDate()) {
                 let new_day = document.createElement('td')
                 new_day.innerHTML = counter
+                new_day.classList.add('bg-transparent','bg-red-400','text-center') 
+                console.log(new_day.className)
                 counter += 1
                 row.append(new_day)
                 if (i == 6) {
