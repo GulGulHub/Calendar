@@ -8,6 +8,10 @@ let check_this = last_day.getDate()
 let current_year = today_date.getFullYear()
 let current_month = today_date.toLocaleString('default', { month: 'long' });
 
+let page_show_date = document.querySelector('#today-date');
+page_show_date.innerText = today_date.toLocaleDateString()
+
+
 let arrow_left = document.querySelector('#arrow-left');
 arrow_left.addEventListener('click', function() {
   newFunction(-1);
@@ -18,6 +22,7 @@ arrow_right.addEventListener('click', function() {
     newFunction(1);
   });
 
+  
 
 function newFunction (direction) {
     console.log('click-has-worked')
@@ -29,9 +34,14 @@ function newFunction (direction) {
       
         // Create a new Date object with the given month and year
         let currentDate = new Date(checkYear, monthNumber, 1);
+
+        console.log("new log!!!!",currentDate.getMonth() + direction)
+
+    
       
         // Get the previous month and year
         let previousMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + direction, 1);
+        
         let previousMonth = previousMonthDate.toLocaleString('default', { month: 'long' });
         let previousYear = previousMonthDate.getFullYear();
 
@@ -57,10 +67,17 @@ create_years_months(current_month, current_year)
 
 
 function fill_calendar(last, first) {
-    let first_weekday = first.getDay() - 1;
-    console.log("got in");
-    console.log(last.getDate());
+    console.log('function fill calender started')
+    check_day = first.getDay()
+    let first_weekday
+    if (check_day == 0) {
+        first_weekday =  6; // I need this to make sure that the value is not -1
+    }
+    else {
+        first_weekday = check_day - 1;
+    }
     let counter = 1;
+    let counter2 = 1;
     let table_body = document.querySelector('tbody');
 
     // Create a new table body
@@ -69,8 +86,10 @@ function fill_calendar(last, first) {
     new_table_body.appendChild(new_row);
     let row = new_row;
 
-    while (counter <= last.getDate()) {
+    while (counter <= last.getDate() || counter2 <=50 ) {
         for (let i = 0; i < 7; i++) {
+            console.log('check the counter!!!!', counter)
+            counter2 += 1
             if (first_weekday != i && counter == 1) {
                 console.log('added empty');
                 let empty_day = document.createElement('td');
@@ -87,7 +106,7 @@ function fill_calendar(last, first) {
                 //new_day.style.backgroundColor = 'red';
                 new_day.classList.add('bg-transparent', 'bg-blue-100', 'text-center');
                 console.log(new_day.className);
-                counter += 1;
+                counter += 1;   
                 row.append(new_day);
                 if (i == 6) {
                     new_row = document.createElement('tr'); // Create a new row
@@ -114,7 +133,49 @@ function fill_calendar(last, first) {
     table_body.parentNode.replaceChild(new_table_body, table_body);
 }
 
+//function create_date_box() {
+   
 
 
 
 fill_calendar(last_day, first_day)
+
+document.querySelectorAll('#my-calender td')
+    .forEach(td => td.addEventListener("click", function(event) {
+        let target_date = event.target.innerText;
+        console.log('here is target_date:', target_date);
+        make_a_date_entry(target_date);
+        console.log("clicked");
+    }));
+
+function make_a_date_entry(target_date) {
+        let checkMonth = document.querySelector('#month').innerText;
+        let checkYear = document.querySelector('#year').innerText;
+      
+        // Convert the month name to its corresponding numerical value
+        let monthNumber = new Date(Date.parse(checkMonth + " 1, " + checkYear)).getMonth()
+    
+        let this_day = new Date(checkYear, monthNumber,target_date);
+        page_show_date.innerText = this_day.toLocaleDateString()
+}
+
+
+let url_bored = "http://www.boredapi.com/api/activity?type=recreational"
+
+
+let bored = document.querySelector('#bored-button')
+let show_bored = document.querySelector('#show-bored')
+bored.addEventListener("click", function() {
+    make_bored();
+});
+
+
+
+function make_bored() {
+    fetch(url_bored)
+      .then(response => response.json())
+      .then(data => {
+        let suggestion = data['activity'];
+        show_bored.innerText = suggestion;
+      });
+  }
