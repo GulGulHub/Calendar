@@ -12,7 +12,7 @@ let current_year = today_date.getFullYear()
 let current_month = today_date.toLocaleString('default', { month: 'long' });
 
 let page_show_date = document.querySelector('#today-date');
-page_show_date.innerText = today_date.toLocaleDateString()
+page_show_date.innerText = today_date.toLocaleDateString();
 
 let arrow_left = document.querySelector('#arrow-left');
 arrow_left.addEventListener('click', function () {
@@ -159,9 +159,7 @@ document.querySelectorAll('#my-calender td')
         let current_year = today_date.getFullYear()
         let current_month = today_date.toLocaleString('default', { month: 'long' });
         
-        let page_show_date = document.querySelector('#today-date');
-        page_show_date.innerText = today_date.toLocaleDateString()
-        
+      
         let arrow_left = document.querySelector('#arrow-left');
         arrow_left.addEventListener('click', function () {
             newFunction(-1);
