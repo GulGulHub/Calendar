@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Days from './Days';
+import React  from 'react';
+
 
 function Months({ currentMonth, setCurrentMonth }) {
   const handleNextMonth = () => {

@@ -1,45 +1,52 @@
 import './App.css';
-import Days from './components/Days.js';
-import Months from './components/Months.js';
+import Calender from './components/Calender/Calender.js'
 /*import Appointment from './components/Appointment.js'*/
-import React, {useState} from 'react';
+import ToDo from './components/ToDo.js'
+import Appointment from './components/Appointment.js'
+import API1 from './components/API1.js'
+import API2 from './components/API2.js'
+import API3 from './components/API3.js'
+import React from 'react';
 
 
 function App() {
-  
-  const [currentMonth, setCurrentMonth] = useState(new Date()); // Set the initial month here
+
 
   return (
-    <article id="calender-section-column" className="flex m-5">
+    /*   <div className="grid grid-rows-3 grid cols-3">
+        <div className="grid-col-1" ></div>
+        <div></div>
+      <article id="calender-section-column" className="">
+        <Calender />
+      </article>
+      <div></div>
+      <div></div>
+      <div></div>
+      </div> */
 
-      <div id="calender-wrapper" className="bg-white ">
+    <div className="grid grid-rows-3 grid-cols-3 gap-4 bg-gray-300 h-screen">
 
-        <div id="Calender" className="text-3xl font-bold hover:text-gray-700 text-center p-2">
-          <div className="flex items-center justify-center">
-           <Months currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-        </div>
-        </div>
-
-        <div id="table_wrapper" className="mx-auto">
-          <table id="my-calender" className="w-full">
-            <thead>
-              <tr>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Monday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Tuesday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Wednesday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Thursday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Friday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Saturday</th>
-                <th className="bg-fuchsia-600 border-2 text-s p-1">Sunday</th>
-              </tr>
-            </thead>
-            <tbody className="bg-transparent">
-                <Days currentMonth={currentMonth}/>
-            </tbody>
-          </table>
-        </div>
+      <div className="row-span-1 col-span-1">
+        <Appointment />
       </div>
-    </article>
+      <div className="row-span-2 col-span-2">
+        <Calender />
+      </div>
+      <div className="row-span-1 col-span-1">
+        <ToDo />
+      </div>
+      
+      <div className="row-span-1 col-span-1">
+        <API1 />
+      </div>
+      <div className="row-span-1 col-span-1">
+        < API2 />
+      </div>
+      <div className="row-span-1 col-span-1">
+        <API3 />
+      </div>
+
+    </div>
   );
 }
 
