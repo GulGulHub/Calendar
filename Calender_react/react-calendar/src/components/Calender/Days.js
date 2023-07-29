@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-
-function Days({ currentMonth }) {
-  
-
+function Days({ currentMonth, onDayClick }) {
   useEffect(() => {
     fillCalendar();
   }, [currentMonth]);
+
+  const [appointments, setAppointments] = useState({});
 
   const fillCalendar = () => {
     const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
@@ -19,20 +18,22 @@ function Days({ currentMonth }) {
     const rows = [];
     let row = [];
 
+    // Push empty cells for the days before the first day of the month
+    for (let i = 0; i < first_weekday; i++) {
+      row.push(<td key={`empty-${i}`}></td>);
+    }
+
     while (counter <= lastDay.getDate()) {
-      for (let i = 0; i < 7; i++) {
-        if (first_weekday !== i && counter === 1) {
-          row.push(<td key={`empty-${i}`}></td>);
-        } else if (first_weekday === i && counter === 1) {
+      for (let i = first_weekday; i < 7; i++) {
+        if (counter <= lastDay.getDate()) {
           row.push(
-            <td key={`day-${counter}`} className="bg-transparent bg-blue-100 text-center">
-              {counter}
-            </td>
-          );
-          counter += 1;
-        } else if (counter <= lastDay.getDate()) {
-          row.push(
-            <td key={`day-${counter}`} className="bg-transparent bg-red-400 text-center">
+            <td
+              key={`day-${counter}`}
+              className="bg-transparent bg-red-400 text-center cursor-pointer day-cell"
+              onClick={() =>
+                onDayClick(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), counter))
+              }
+            >
               {counter}
             </td>
           );
@@ -44,12 +45,28 @@ function Days({ currentMonth }) {
           row = [];
         }
       }
+      first_weekday = 0; // Reset first_weekday to 0 for the remaining weeks
     }
 
     return rows;
   };
 
-  return fillCalendar();
+  return (
+    <table id="my-calendar" className="w-full h-full border-collapse">
+      <thead>
+        <tr>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Monday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Tuesday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Wednesday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Thursday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Friday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Saturday</th>
+          <th className="bg-fuchsia-600 border-2 text-s p-1">Sunday</th>
+        </tr>
+      </thead>
+      <tbody className="bg-transparent">{fillCalendar()}</tbody>
+    </table>
+  );
 }
 
 export default Days;

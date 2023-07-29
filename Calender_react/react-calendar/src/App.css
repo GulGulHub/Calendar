@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* Add this CSS to style the day cells and show the grid */
+#my-calendar {
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.day-cell {
+  height: 80px; /* Adjust the height of the day cells as desired */
+  width: 100px; /* Adjust the width of the day cells as desired */
+  border: 1px solid #000; /* Add a border to show the grid */
+  vertical-align: top; /* Align cell content to the top */
+}
