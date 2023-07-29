@@ -13,16 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 .App-link {
   color: #61dafb;
@@ -45,8 +36,15 @@
 }
 
 .day-cell {
-  height: 80px; /* Adjust the height of the day cells as desired */
-  width: 100px; /* Adjust the width of the day cells as desired */
-  border: 1px solid #000; /* Add a border to show the grid */
+  height: 60px; /* Adjust the height of the day cells as desired */
+  width: 80px; /* Adjust the width of the day cells as desired */
+  border: 1px solid hotpink; /* Add a border to show the grid */
   vertical-align: top; /* Align cell content to the top */
+}
+
+/*Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/E0AHdsENmDg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  **/
+
+body {  
+  background: url(./universe.jpg) no-repeat;
 }

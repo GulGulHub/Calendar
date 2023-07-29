@@ -7,24 +7,16 @@ import API1 from './components/API1.js'
 import API2 from './components/API2.js'
 import API3 from './components/API3.js'
 import React from 'react';
+import Background from './universe.jpg'
 
 
 function App() {
 
 
   return (
-    /*   <div className="grid grid-rows-3 grid cols-3">
-        <div className="grid-col-1" ></div>
-        <div></div>
-      <article id="calender-section-column" className="">
-        <Calender />
-      </article>
-      <div></div>
-      <div></div>
-      <div></div>
-      </div> */
-
-    <div className="grid grid-rows-3 grid-cols-3 gap-4 bg-gray-300 h-screen">
+    <div bg-cover h-100
+    style={{backgroundImage: "url(${Background})"}}>
+    <div className="grid grid-rows-3 grid-cols-3 gap-4 text-pink-400">
 
       <div className="row-span-1 col-span-1">
         <Appointment />
@@ -46,6 +38,7 @@ function App() {
         <API3 />
       </div>
 
+    </div>
     </div>
   );
 }

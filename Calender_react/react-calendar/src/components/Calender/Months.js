@@ -24,7 +24,7 @@ function Months({ currentMonth, setCurrentMonth }) {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold hover:text-gray-700 text-center p-2">Calendar</h1>
+      
       <div className="flex items-center">
         <button onClick={handlePreviousMonth} className="inline cursor-pointer hover:cursor-pointer">
           &lt;
