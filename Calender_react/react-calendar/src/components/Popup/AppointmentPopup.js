@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-function AppointmentPopup({ selectedDate, currentMonth, onClose, onSave }) {
+function AppointmentPopup({ selectedDate, onClose, onSave }) {
   const [appointment, setAppointment] = useState('');
   const [time, setTime] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -11,14 +10,29 @@ function AppointmentPopup({ selectedDate, currentMonth, onClose, onSave }) {
       setAppointment(value);
     } else if (name === 'time') {
       setTime(value);
-    } else if (name === 'message') {
-      setMessage(value);
     }
   };
 
   const handleSave = () => {
-    onSave(selectedDate, appointment, time, message); // Pass time and message to onSave function
+    onSave(selectedDate, appointment, time); // Pass time to onSave function
     onClose();
+  };
+
+  const saveAppointmentAndTimeToLocalStorage = () => {
+    const existingAppointments = JSON.parse(localStorage.getItem('appointments')) || {};
+    const dateString = selectedDate.toDateString();
+
+    const appointmentObj = {
+      time: time,
+      event: appointment,
+    };
+
+    const updatedAppointments = {
+      ...existingAppointments,
+      [dateString]: appointmentObj,
+    };
+
+    localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
   };
 
   return (
@@ -42,7 +56,7 @@ function AppointmentPopup({ selectedDate, currentMonth, onClose, onSave }) {
           value={appointment}
           onChange={handleInputChange}
         ></textarea>
-      
+
         <div className="mt-2 flex justify-end">
           <button
             className="px-4 py-2 mr-2 bg-gray-400 text-white rounded"
@@ -52,7 +66,10 @@ function AppointmentPopup({ selectedDate, currentMonth, onClose, onSave }) {
           </button>
           <button
             className="px-4 py-2 bg-green-500 text-white rounded"
-            onClick={handleSave}
+            onClick={() => {
+              handleSave();
+              saveAppointmentAndTimeToLocalStorage();
+            }}
           >
             Save
           </button>
