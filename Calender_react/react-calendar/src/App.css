@@ -38,7 +38,7 @@
 .day-cell {
   height: 60px; /* Adjust the height of the day cells as desired */
   width: 80px; /* Adjust the width of the day cells as desired */
-  border: 1px solid hotpink; /* Add a border to show the grid */
+  /**border: 1px solid hotpink; /* Add a border to show the grid */
   vertical-align: top; /* Align cell content to the top */
 }
 

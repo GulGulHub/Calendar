@@ -45,22 +45,22 @@ function UpcomingEvents() {
   });
 
   return (
-    <div className="upcoming-events">
-      <h2>Today's Events</h2>
+    <div className="upcoming-events  pt-6 pl-10 border-2 border-green-500">
+      <h1 className="text-xl" >Today's Events:</h1>
       {todaysEvents.length > 0 ? (
-        <ul>
+        <ul className='p-4 text-white'>
           {todaysEvents.map((appointment, index) => (
             <li key={index}>{appointment}</li>
           ))}
         </ul>
       ) : (
-        <p>No events for today.</p>
+        <p className='p-4 text-white'>No events for today.</p>
       )}
 
-      <h2>Upcoming Events</h2>
+      <h2 className='text-xl'>Upcoming Events:</h2>
       {upcomingEvents.length > 0 ? (
         <div className="max-h-48 overflow-y-auto">
-          <ul>
+          <ul className='text-white p-4'>
             {upcomingEvents.map(({ date, appointment }, index) => (
               <li key={index}>
                 {date}: {appointment}
@@ -69,7 +69,7 @@ function UpcomingEvents() {
           </ul>
         </div>
       ) : (
-        <p>No upcoming events in the future.</p>
+        <p className="text-white p-4">No upcoming events in the future.</p>
       )}
     </div>
   );

@@ -63,13 +63,13 @@ function Days({ currentMonth, onDayClick, appointments }) {
     <table id="my-calendar" className="w-full h-full border-collapse">
       <thead>
         <tr>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Monday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Tuesday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Wednesday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Thursday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Friday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Saturday</th>
-          <th className="bg-fuchsia-600 border-2 text-s p-1">Sunday</th>
+          <th className=" text-s p-1">Monday</th>
+          <th className="  text-s p-1">Tuesday</th>
+          <th className=" text-s p-1">Wednesday</th>
+          <th className="text-s p-1">Thursday</th>
+          <th className="text-s p-1">Friday</th>
+          <th className="text-s p-1">Saturday</th>
+          <th className=" text-s p-1">Sunday</th>
         </tr>
       </thead>
       <tbody className="bg-transparent">{fillCalendar()}</tbody>

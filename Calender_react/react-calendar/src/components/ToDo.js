@@ -39,32 +39,44 @@ export const Todo = () => {
   };
 
   return (
-    <div>
-      <h1>Todo App</h1>
-      {/* <form> this will group the input and form allowing access to input value on */}
-      <input
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-      />
-      <button onClick={addTodo}>Add Todo</button>
-      {/* </form> */}
-      <ul>
+    <div className="pt-6 pb-6 pl-10 border-2 border-green-500 ">
+      <h1 className="text-2xl pb-5">Todos</h1>
+      <div className="">
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          className="border-pink-500 border-2 rounded bg-transparent text-white  text-center mb-2 w-48"
+          placeholder="New Todo..."
+        />
+        <button
+          className="border-pink-500 border-2 rounded text-green-500 hover:bg-pink-500 hover:text-white transition"
+          onClick={addTodo}
+        >
+          Add Todo
+        </button>
+      </div>
+      <ul className="text-white">
         {todos.map((todo) => (
           <li key={todo.id}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
+              className="border-pink-500 border-2 mr-5"
             />
             <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none"
-              }}
+              className={todo.completed ? "line-through" : ""}
             >
               {todo.text}
             </span>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button
+              className="border-pink-500 border-2 ml-2 text-green-500"
+              onClick={() => deleteTodo(todo.id)}
+
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
@@ -72,4 +84,4 @@ export const Todo = () => {
   );
 };
 
-export default ToDo
+export default Todo;

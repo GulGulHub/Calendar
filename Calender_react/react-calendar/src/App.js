@@ -1,7 +1,7 @@
 import './App.css';
 import Calender from './components/Calender/Calender.js'
 /*import Appointment from './components/Appointment.js'*/
-import ToDo from './components/ToDo.js'
+import {Todo} from './components/ToDo.js'
 import UpcomingEvents from './components/UpcomingEvents.js'
 import API1 from './components/API1.js'
 import API2 from './components/API2.js'
@@ -24,7 +24,7 @@ function App() {
   return (
     <div bg-auto 
     style={{backgroundImage: "url(${Background})"}}>
-    <div className="grid grid-rows-3 grid-cols-3 gap-4 text-pink-400">
+    <div className="grid grid-rows-3 grid-cols-3 gap-4 text-pink-500">
 
       <div className="row-span-1 col-span-1">
         <UpcomingEvents appointments={appointments}/>
@@ -33,16 +33,16 @@ function App() {
         <Calender />
       </div>
       <div className="row-span-1 col-span-1">
-        <ToDo />
+        <Todo />
       </div>
       
-      <div className="row-span-1 col-span-1">
+      <div className="row-span-1 col-span-1 pt-5">
         <API1 />
       </div>
-      <div className="row-span-1 col-span-1">
+      <div className="row-span-1 col-span-1 pt-5">
         < API2 />
       </div>
-      <div className="row-span-1 col-span-1">
+      <div className="row-span-1 col-span-1 pt-5">
         <API3 />
       </div>
 
