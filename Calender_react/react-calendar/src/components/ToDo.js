@@ -39,18 +39,18 @@ export const Todo = () => {
   };
 
   return (
-    <div className="pt-6 pb-6 pl-10 border-2 border-green-500 ">
+    <div className="pt-6 pb-6 pl-10  ">
       <h1 className="text-2xl pb-5">Todos</h1>
-      <div className="">
+      <div className="sm:mr-2 mb-2">
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          className="border-pink-500 border-2 rounded bg-transparent text-white  text-center mb-2 w-48"
+          className="p-1 border-pink-500 border-2 rounded bg-transparent text-white  text-center mb-2 w-48"
           placeholder="New Todo..."
         />
         <button
-          className="border-pink-500 border-2 rounded text-green-500 hover:bg-pink-500 hover:text-white transition"
+          className="lg:ml-5 sm:ml-1 p-1 border-pink-500 border-2 rounded text-green-500 hover:bg-pink-500 hover:text-white transition "
           onClick={addTodo}
         >
           Add Todo

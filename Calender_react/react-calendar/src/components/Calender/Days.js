@@ -63,13 +63,23 @@ function Days({ currentMonth, onDayClick, appointments }) {
     <table id="my-calendar" className="w-full h-full border-collapse">
       <thead>
         <tr>
-          <th className=" text-s p-1">Monday</th>
-          <th className="  text-s p-1">Tuesday</th>
-          <th className=" text-s p-1">Wednesday</th>
-          <th className="text-s p-1">Thursday</th>
-          <th className="text-s p-1">Friday</th>
-          <th className="text-s p-1">Saturday</th>
-          <th className=" text-s p-1">Sunday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Monday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Tuesday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Wednesday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Thursday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Friday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Saturday</th>
+          <th className="hidden lg:table-cell lg:text-s p-1">Sunday</th>
+        </tr>
+        {/* Abbreviated Weekday Headers for Small Screens */}
+        <tr className="lg:hidden">
+          <th className="p-1">M</th>
+          <th className="p-1">T</th>
+          <th className="p-1">W</th>
+          <th className="p-1">T</th>
+          <th className="p-1">F</th>
+          <th className="p-1">S</th>
+          <th className="p-1">S</th>
         </tr>
       </thead>
       <tbody className="bg-transparent">{fillCalendar()}</tbody>

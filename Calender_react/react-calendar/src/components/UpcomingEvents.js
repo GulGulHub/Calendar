@@ -45,8 +45,8 @@ function UpcomingEvents() {
   });
 
   return (
-    <div className="upcoming-events  pt-6 pl-10 border-2 border-green-500">
-      <h1 className="text-xl" >Today's Events:</h1>
+    <div className="upcoming-events  pt-6 pl-10 ">
+      <h1 className="text-2xl" >Today's Events:</h1>
       {todaysEvents.length > 0 ? (
         <ul className='p-4 text-white'>
           {todaysEvents.map((appointment, index) => (
@@ -57,7 +57,7 @@ function UpcomingEvents() {
         <p className='p-4 text-white'>No events for today.</p>
       )}
 
-      <h2 className='text-xl'>Upcoming Events:</h2>
+      <h2 className='text-2xl'>Upcoming Events:</h2>
       {upcomingEvents.length > 0 ? (
         <div className="max-h-48 overflow-y-auto">
           <ul className='text-white p-4'>

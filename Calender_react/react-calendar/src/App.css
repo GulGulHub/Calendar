@@ -29,7 +29,7 @@
 }
 
 /* Add this CSS to style the day cells and show the grid */
-#my-calendar {
+#my-calender {
   table-layout: fixed;
   height: 100%;
   width: 100%;
@@ -40,6 +40,7 @@
   width: 80px; /* Adjust the width of the day cells as desired */
   /**border: 1px solid hotpink; /* Add a border to show the grid */
   vertical-align: top; /* Align cell content to the top */
+  margin-top: 50px;
 }
 
 /*Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/E0AHdsENmDg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

@@ -19,7 +19,7 @@ const API2 = () => {
 
   return (
     <div className="text-center">
-      <h2 className="text-2xl font-bold mb-4">NEED ADVICE?</h2>
+      <h2 className="text-2xl font-bold mb-4">NEED ADVICE ?</h2>
       <button
         id="advice-button"
         className="border-pink-500 border-2 rounded py-2 px-4 text-green-500 hover:bg-pink-500 hover:text-white transition"
