@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Days from './Days.js';
-import Months from './Months.js';
-//import Tablehead from './Tablehead.js';
-import AppointmentPopup from '../Popup/AppointmentPopup.js';
-
+import Days from './Days';
+import Months from './Months';
+import AppointmentPopup from '../Popup/AppointmentPopup';
 
 function Calender() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -37,16 +35,16 @@ function Calender() {
   return (
     <div className="h-full">
       <div id="calender-wrapper" className="h-full">
-      <div id="Calender" className="text-3xl font-bold hover:text-gray-700 text-center p-2">
-            <div className="flex items-center justify-center">
-                <Months currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-            </div>
+        <div id="Calender" className="text-3xl font-bold hover:text-gray-700 text-center p-2">
+          <div className="flex items-center justify-center">
+            <Months currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
+          </div>
         </div>
         <div id="table_wrapper" className="">
           <table id="my-calender" className="w-full h-full">
-           
             <tbody className="bg-transparent">
-              <Days currentMonth={currentMonth} onDayClick={handleDayClick} />
+              {/* Pass the 'appointments' prop to the 'Days' component */}
+              <Days currentMonth={currentMonth} onDayClick={handleDayClick} appointments={appointments} />
             </tbody>
           </table>
         </div>
@@ -54,7 +52,8 @@ function Calender() {
       {showPopup && (
         <AppointmentPopup
           selectedDate={selectedDate}
-          currentMonth={currentMonth} // Pass currentMonth separately
+          currentMonth={currentMonth}
+          appointments={appointments}
           onClose={handleClosePopup}
           onSave={handleSaveAppointment}
         />

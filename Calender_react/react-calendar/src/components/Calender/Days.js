@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-function Days({ currentMonth, onDayClick }) {
+function Days({ currentMonth, onDayClick, appointments }) {
   useEffect(() => {
     fillCalendar();
   }, [currentMonth]);
-
-  const [appointments, setAppointments] = useState({});
 
   const fillCalendar = () => {
     const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
@@ -26,17 +24,27 @@ function Days({ currentMonth, onDayClick }) {
     while (counter <= lastDay.getDate()) {
       for (let i = first_weekday; i < 7; i++) {
         if (counter <= lastDay.getDate()) {
+          const currentDate = new Date(
+            currentMonth.getFullYear(),
+            currentMonth.getMonth(),
+            counter
+          );
+
+          const dateString = currentDate.toDateString();
+          const hasAppointment = appointments[dateString];
+
           row.push(
             <td
               key={`day-${counter}`}
-              className="bg-transparent bg-red-400 text-center cursor-pointer day-cell"
-              onClick={() =>
-                onDayClick(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), counter))
-              }
+              className={`${
+                hasAppointment ? 'neongreen-square ' : ''
+              }bg-transparent bg-red-400 text-center cursor-pointer day-cell`}
+              onClick={() => onDayClick(currentDate)}
             >
               {counter}
             </td>
           );
+
           counter += 1;
         }
 
