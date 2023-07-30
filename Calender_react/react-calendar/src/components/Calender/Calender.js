@@ -33,8 +33,8 @@ function Calender() {
   };
 
   return (
-    <div className="h-full">
-      <div id="calender-wrapper" className="h-full">
+    <div className="h-full ">
+      <div id="calender-wrapper" className="h-full border-2 border-green-500">
         <div id="Calender" className="text-3xl font-bold hover:text-gray-700 text-center p-2">
           <div className="flex items-center justify-center">
             <Months currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
